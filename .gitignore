@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Dados do usuário (em instalações antigas, a pasta de dados e o código são a mesma pasta no Windows).
+# Nunca enviar para o GitHub.
+UltronVault/
+ultron.toml
+ultron.db
+ultron.db-*
+ultron.log
+mcp.json
+mcp/
+mode.json
+status.json
+planos/
+servidor/
+Lixeira/
+*.txt.tmp

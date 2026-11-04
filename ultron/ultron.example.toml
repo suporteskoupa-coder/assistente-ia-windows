@@ -1,0 +1,76 @@
+# Configuração do Ultron. Copiado para %USERPROFILE%\Ultron\ultron.toml na instalação.
+
+[ultron]
+port = 8765              # porta local do núcleo
+hotkey = "ctrl+space"    # alterna tela cheia <-> modo compacto
+
+[paths]
+# home = "C:/Users/voce/Ultron"            # padrão: %USERPROFILE%\Ultron
+# vault = "C:/Users/voce/Ultron/UltronVault"
+
+# Apps que o Ultron pode abrir: apelido = caminho do .exe ou comando
+[apps]
+vscode = "code"
+spotify = "spotify:"
+explorer = "explorer.exe"
+discord = "discord:"
+
+# Modos: conjuntos de apps (apelidos acima) e sites
+[modes.trabalho]
+apps = ["vscode", "spotify"]
+urls = ["https://github.com"]
+
+[modes.jogo]
+apps = ["discord"]
+urls = []
+
+[discord]
+# Prefira a variável de ambiente ULTRON_DISCORD_TOKEN em vez de deixar o token aqui.
+# token = ""
+
+# Falar com o Ultron pelo celular, por DM ao bot. Só o dono é atendido.
+# Pelo celular: terminal e edição de arquivos ficam sempre bloqueados; outras ações pedem "sim" na DM.
+# Ative a verificação em duas etapas da sua conta do Discord antes de ligar.
+controle_remoto = false
+dono_id = ""                 # seu ID de usuário (Modo desenvolvedor > clique no seu nome > Copiar ID)
+lembretes_no_celular = false # lembretes também chegam por DM
+
+# Ultron respondendo por você no servidor quando alguém escreve a palavra de ativação.
+# Exige "Message Content Intent" ligado no portal do Discord (aba Bot).
+# Aqui ele NÃO tem ferramentas nem controla o PC. Sabe: seu status, horários ocupados de hoje e notas.
+[discord.servidor]
+ativo = false
+palavra = "ultron"
+canais = []                  # IDs dos canais onde ele pode responder
+seu_nome = ""                # como ele te chama ("o <seu nome> vai entrar?")
+notas = "publica"            # publica = só Notas/Publico | todas = todas as suas notas (exceto a pasta Ultron/) | nenhuma
+mostrar_ocupado = true       # horários dos lembretes de hoje, sem o texto
+por_minuto = 5               # limite anti-spam
+por_dia = 50
+cerebro = "seguir"           # seguir = o botão CLAUDE/LOCAL da HUD manda | claude | local (sempre sem ferramentas)
+                             # se o Claude falhar (ex.: limite da assinatura), tenta o local
+escalada = false             # com cada amigo, o Ultron fica mais vilão conforme a pessoa conversa com ele
+escalada_passo = 10          # quantas conversas para subir um nível (níveis 0 a 5); você nunca entra na escalada
+escalada_reset = "ultron volta ao normal"   # frase que zera o nível de quem escrever
+
+[discord.channels]
+# geral = "123456789012345678"
+
+[steam]
+# root = "C:/Program Files (x86)/Steam"    # padrão: detectado automaticamente
+
+[ollama]
+url = "http://127.0.0.1:11434"
+model = "qwen3:8b"       # alternativas: "llama3.1:8b", "qwen3.5:9b"
+vision_model = "qwen3-vl:8b"   # para ler a tela no modo local; "" desliga (alternativa: "qwen2.5vl:7b")
+ctx = 16384
+
+[tela]
+# Deixa o Ultron tirar print do monitor principal quando você pedir ("o que é esse erro na tela?").
+# O print não é salvo. No cérebro Claude a imagem vai para a Anthropic; no local, não sai do PC.
+habilitada = true
+
+[claude]
+bin = "claude"
+# Comandos de terminal liberados sem confirmação (formato do Claude Code)
+allowed_bash = []

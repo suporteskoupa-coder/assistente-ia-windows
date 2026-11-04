@@ -1,0 +1,4 @@
+{"type": "rate_limit_event", "session_id": "11111111-2222-3333-4444-555555555555"}
+{"type": "system", "subtype": "init", "session_id": "11111111-2222-3333-4444-555555555555", "tools": ["Read"], "mcp_servers": [], "model": "x", "permissionMode": "default", "cwd": "/x"}
+{"type": "assistant", "session_id": "11111111-2222-3333-4444-555555555555", "message": {"role": "assistant", "content": [{"type": "text", "text": "oi"}]}}
+{"type": "result", "subtype": "success", "is_error": false, "result": "oi", "session_id": "11111111-2222-3333-4444-555555555555"}

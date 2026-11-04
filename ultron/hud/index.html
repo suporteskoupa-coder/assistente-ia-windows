@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultron</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;500;700&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Semi+Condensed:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="/hud/hud.css">
+</head>
+<body class="idle">
+<header id="titlebar" class="pywebview-drag-region">
+  <span class="brand">ULTRON</span>
+  <span class="lbl" id="clock">--:--</span>
+  <span class="spacer"></span>
+  <span class="lbl" id="mode-label">CLAUDE</span>
+  <button id="sound" title="Sons da interface" aria-pressed="false">♪</button>
+  <button id="toggle-compact" title="Modo compacto (Ctrl+Espaço)">▣</button>
+  <button id="close" title="Fechar">✕</button>
+</header>
+
+<main id="stage">
+  <canvas id="core" aria-label="Núcleo do Ultron"></canvas>
+
+  <aside id="left" class="col">
+    <section class="panel"><div class="in"></div>
+      <h3><span class="lbl">Sistema</span><span class="lbl" id="k-game-tag"></span></h3>
+      <div class="big"><span class="n" id="n-cpu">—</span><span class="k">CPU</span><div class="track"><i id="t-cpu"></i></div></div>
+      <div class="big"><span class="n" id="n-gpu">—</span><span class="k">GPU</span><div class="track"><i id="t-gpu"></i></div></div>
+      <div class="big"><span class="n" id="n-ram">—</span><span class="k">RAM</span><div class="track"><i id="t-ram"></i></div></div>
+    </section>
+
+    <section class="panel"><div class="in"></div>
+      <h3><span class="lbl">Cérebro</span></h3>
+      <div class="brain-select">
+        <button data-brain="claude" class="on">ULTRON · CLAUDE</button>
+        <button data-brain="ollama">JARVIS · LOCAL</button>
+      </div>
+      <div class="kv"><span>CHAT ATUAL</span><span id="stat-brain">—</span></div>
+      <div class="kv"><span>CLAUDE CODE</span><span id="stat-claude">—</span></div>
+      <div class="kv"><span>OLLAMA</span><span id="stat-ollama">—</span></div>
+      <button id="switch-brain" class="link">Continuar no outro cérebro</button>
+      <button id="close-chat" class="link">Encerrar chat (salvar resumo)</button>
+    </section>
+
+    <section class="panel"><div class="in"></div>
+      <h3><span class="lbl">Chats</span><button id="new-chat" class="link small">+ NOVO</button></h3>
+      <div id="chats"></div>
+    </section>
+
+    <section class="panel"><div class="in"></div>
+      <h3><span class="lbl">Memória</span></h3>
+      <div class="kv"><span>NOTAS</span><span id="stat-notes"></span></div>
+      <div class="kv"><span>AÇÕES HOJE</span><span id="stat-actions"></span></div>
+      <div class="kv"><span>STEAM</span><span id="stat-games"></span></div>
+      <div class="kv"><span>JOGO ABERTO</span><span id="k-game">—</span></div>
+      <div class="sub-lbl">CONCLUSÕES</div>
+      <div id="conclusions"></div>
+      <div class="sub-lbl">SERVIDOR</div>
+      <div id="server-log"><div class="concl">Nenhuma resposta ainda.</div></div>
+    </section>
+  </aside>
+
+  <section id="center">
+    <div id="core-area"></div>
+    <div id="caption"><div class="state" id="state-name">OCIOSO</div><div class="sub" id="state-sub">aguardando comando</div></div>
+    <div id="bubble"></div>
+    <div id="cards">
+      <section id="briefing" class="card" hidden>
+        <div class="card-title">RESUMO</div>
+        <div id="briefing-body"></div>
+        <div class="btns"><button id="briefing-close" class="ghost">FECHAR</button></div>
+      </section>
+      <section id="reminder-card" class="card alert" hidden>
+        <div class="card-title" id="reminder-title">LEMBRETE</div>
+        <div id="reminder-text"></div>
+        <div class="btns"><button id="rem-ok" class="primary">OK</button><button id="rem-snooze" class="ghost">ADIAR 10 MIN</button></div>
+      </section>
+      <section id="confirm-card" class="card alert" hidden>
+        <div class="card-title">CONFIRMAÇÃO</div>
+        <div id="confirm-desc"></div>
+        <textarea id="confirm-text" rows="3" hidden></textarea>
+        <div class="btns"><button id="allow" class="primary">PERMITIR</button><button id="deny" class="ghost">NEGAR</button></div>
+      </section>
+    </div>
+    <form id="form" autocomplete="off">
+      <input id="input" placeholder="FALE COM O ULTRON…" aria-label="Mensagem para o Ultron">
+    </form>
+  </section>
+
+  <aside id="right" class="col">
+    <section class="panel chat"><div class="in"></div>
+      <h3><span class="lbl">Conversa · <b id="chat-title">novo chat</b></span></h3>
+      <div id="history" aria-live="polite"></div>
+    </section>
+  </aside>
+</main>
+<script src="/hud/nucleo.js"></script>
+<script src="/hud/hud.js"></script>
+</body>
+</html>
